@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/project2?useUnicode=true&amp&characterEncoding=utf-8
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  thymeleaf:
+    encoding: UTF-8
+    enabled: true
+    mode: HTML
+  http:
+    encoding:
+      charset: UTF-8
+
+server:
+  port: 8084

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>学生成绩详情</title>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css" >
+</head>
+<body th:object="${students}">
+
+<div class="container" style="max-width: 700px;" >
+
+    <h2 class="page-header" style="margin-top: 50px;">详情</h2>
+    <div class="well">
+
+        <p>
+            <strong>姓名：</strong><span th:text="*{name}">张三</span>
+        </p>
+        <p>
+            <strong>性别：</strong><span th:text="*{sex}">男</span>
+        </p>
+        <p>
+            <strong>语文：</strong><span th:text="*{chinese}">A</span>
+        </p>
+        <p>
+            <strong>数学：</strong><span th:text="*{math}">A</span>
+        </p>
+        <p>
+            <strong>英语：</strong><span th:text="*{english}">A</span>
+        </p>
+        <p><a href="./students.html" th:href="@{/students}" class="btn btn-primary">返回</a>
+        </p>
+
+
+
+    </div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script th:src="@{/js/bootstrap.min.js}" src="../static/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>

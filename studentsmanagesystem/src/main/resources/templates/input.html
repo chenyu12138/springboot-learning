@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../static/css/bootstrap.min.css" >
+</head>
+<body>
+
+    <div class="container" style="width:400px">
+
+        <div class="well">
+            <form action="#" th:action="@{/students}" th:object="${students}" method="post">
+                <input type="hidden" th:value="*{id}" name="id">
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" name="name" id="name" class="form-control" th:field="*{name}">
+                </div>
+                <div class="form-group">
+                    <label for="sex">性别</label>
+                    <select name="sex" id="sex" class="form-control" th:field="*{sex}">
+                        <option value="男" th:selected="(*{sex} == '男')">男</option>
+                        <option value="女" th:selected="(*{sex} == '女')">女</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="chinese">语文</label>
+                    <select name="chinese" id="chinese" class="form-control">
+                        <option value="A" th:selected="(*{chinese} == 'A')">A</option>
+                        <option value="B" th:selected="(*{chinese} == 'B')">B</option>
+                        <option value="C" th:selected="(*{chinese} == 'C')">C</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="math">数学</label>
+                    <select name="math" id="math" class="form-control">
+                        <option value="A" th:selected="(*{math} == 'A')">A</option>
+                        <option value="B" th:selected="(*{math} == 'B')">B</option>
+                        <option value="C" th:selected="(*{math} == 'C')">C</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="english">英语</label>
+                    <select name="english" id="english" class="form-control">
+                        <option value="A" th:selected="(*{english} == 'A')">A</option>
+                        <option value="B" th:selected="(*{english} == 'B')">B</option>
+                        <option value="C" th:selected="(*{english} == 'C')">C</option>
+                    </select>
+                </div>
+                <p class="text-center">
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </p>
+            </form>
+        </div>
+
+
+    </div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script th:src="@{/js/bootstrap.min.js}" src="../static/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -37,6 +37,13 @@ public class LoginController {
         return  "login";
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("user");
+        return "login";
+    }
+
+
     @GetMapping("/exception")
     public String testException() {
         throw new RuntimeException("测试异常处理");

@@ -2,7 +2,7 @@ package com.chenyu.web;
 
 import com.chenyu.domain.Students;
 import com.chenyu.exception.StudentsNotFoundException;
-import com.chenyu.service.StudentsService;
+import com.chenyu.service.StudentsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Page;
@@ -18,8 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class StudentsController {
 
     @Autowired
-    private StudentsService studentsService;
-
+    private StudentsServiceImpl studentsService;
 
 
     @GetMapping("/students")
@@ -30,9 +29,6 @@ public class StudentsController {
         return "students";
     }
 
-
-
-
     /**
      * 跳转到更新页面input
      * @param id
@@ -41,12 +37,10 @@ public class StudentsController {
      */
     @GetMapping("/students/{id}/input")
     public String editPage(@PathVariable long id, Model model){
-        Students students = studentsService.findOne(id);
+        Students students = studentsService.getStudentById(id);
         model.addAttribute("students", students);
         return "input";
     }
-
-
 
     /**
      * 跳转input提交页面
@@ -66,23 +60,32 @@ public class StudentsController {
      */
     @PostMapping("/students")
     public String post(Students students){
-        studentsService.save(students);
+        studentsService.saveStudent(students);
         return "redirect:/students";
 
     }
 
-    //删除学生成绩
-    //利用ModelAndView进行重定向
+    /**
+     * 根据id删除学生成绩信息，利用ModelAndView进行重定向
+     * @param id
+     * @return
+     */
     @GetMapping(value = "/delete/{id}")
     public ModelAndView delete(@PathVariable("id") long id) {
-        this.studentsService.delete(id);
+        this.studentsService.deleteStudentById(id);
 
         return new ModelAndView("redirect:/students");
     }
 
+    /**
+     * 根据id查询学生成绩详情
+     * @param id
+     * @param model
+     * @return
+     */
     @GetMapping("/students/search")
     public String checkPage(@RequestParam("id") long id, Model model){
-        Students students = studentsService.findOne(id);
+        Students students = studentsService.getStudentById(id);
         if( students == null) {
             throw new StudentsNotFoundException("学生信息未找到");
         }

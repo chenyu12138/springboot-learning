@@ -1,6 +1,6 @@
 ## springboot-learning   
 
-自学做的一个学生成绩管理的小项目，mysql中的数据需要自己创建，学生students的数据和登录用户Users的数据    
+自学做的一个学生成绩管理的小项目，mysql中的数据需要自己创建，包括学生students的数据和登录用户Users的数据  
 
 9.13实现功能  
   

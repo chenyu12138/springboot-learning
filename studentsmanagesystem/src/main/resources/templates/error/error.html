@@ -14,7 +14,7 @@
             <p>对不起，服务异常，请联系管理员</p>
         </div>
 
-
+        <!--用utext可以隐藏下列日志出现在页面上  -->
         <div th:utext="'&lt;!--'" th:remove="tag"></div>
         <div th:utext="'Failed Request URL : ' + ${url}" th:remove="tag"></div>
         <div th:utext="'Exception message : ' + ${exception.message}" th:remove="tag"></div>

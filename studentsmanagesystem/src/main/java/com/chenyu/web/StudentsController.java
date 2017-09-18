@@ -1,6 +1,7 @@
 package com.chenyu.web;
 
 import com.chenyu.domain.Students;
+import com.chenyu.exception.StudentsNotFoundException;
 import com.chenyu.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,11 +11,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 public class StudentsController {
@@ -73,8 +71,6 @@ public class StudentsController {
 
     }
 
-
-
     //删除学生成绩
     //利用ModelAndView进行重定向
     @GetMapping(value = "/delete/{id}")
@@ -86,9 +82,11 @@ public class StudentsController {
 
     @GetMapping("/students/search")
     public String checkPage(@RequestParam("id") long id, Model model){
-
         Students students = studentsService.findOne(id);
-        model.addAttribute("students", students);
+        if( students == null) {
+            throw new StudentsNotFoundException("学生信息未找到");
+        }
+            model.addAttribute("students", students);
         return "search";
     }
 }

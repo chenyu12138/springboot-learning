@@ -2,6 +2,7 @@ package com.chenyu.web;
 
 import com.chenyu.domain.Students;
 import com.chenyu.exception.StudentsNotFoundException;
+import com.chenyu.service.StudentsService;
 import com.chenyu.service.StudentsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,7 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class StudentsController {
 
     @Autowired
-    private StudentsServiceImpl studentsService;
+    private StudentsService studentsService;
 
 
     @GetMapping("/students")

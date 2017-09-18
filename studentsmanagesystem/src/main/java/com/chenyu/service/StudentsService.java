@@ -2,6 +2,8 @@ package com.chenyu.service;
 
 import java.util.List;
 import com.chenyu.domain.Students;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  * Author chenyu
@@ -15,6 +17,9 @@ public interface StudentsService {
     Students saveStudent(Students students);
 
     void deleteStudentById(long id);
+
+    Page<Students> findAllByPage(Pageable pageable);
+
 
 
 }

@@ -1,5 +1,8 @@
 package com.chenyu.domain;
 
+
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -75,5 +78,17 @@ public class Students implements Serializable{
 
     public void setEnglish(String english) {
         this.english = english;
+    }
+
+    @Override
+    public String toString() {
+        return "Students{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", chinese='" + chinese + '\'' +
+                ", math='" + math + '\'' +
+                ", english='" + english + '\'' +
+                '}';
     }
 }

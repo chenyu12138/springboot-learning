@@ -20,6 +20,8 @@ public interface StudentsService {
 
     Page<Students> findAllByPage(Pageable pageable);
 
+    List<Students> getStudentsByName(String name);
+
 
 
 }

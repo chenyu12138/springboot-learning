@@ -67,6 +67,11 @@ public class StudentsServiceImpl implements StudentsService {
 
         return studentsRepository.findAll(pageable);
     }
+
+    @Override
+    public List<Students> getStudentsByName(String name) {
+        return studentsRepository.findByName(name);
+    }
 }
 
 

@@ -15,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class StudentsController {
 
@@ -23,7 +25,7 @@ public class StudentsController {
 
 
     @GetMapping("/students")
-    public String list(@PageableDefault(size = 5, sort ={"id"}, direction = Sort.Direction.ASC) Pageable pageable,
+    public String list(@PageableDefault(size = 5, sort = {"id"}, direction = Sort.Direction.ASC) Pageable pageable,
                        Model model) {
         Page<Students> page1 = studentsService.findAllByPage(pageable);
         model.addAttribute("page", page1);
@@ -32,12 +34,13 @@ public class StudentsController {
 
     /**
      * 跳转到更新页面input
+     *
      * @param id
      * @param model
      * @return
      */
     @GetMapping("/students/{id}/input")
-    public String editPage(@PathVariable long id, Model model){
+    public String editPage(@PathVariable long id, Model model) {
         Students students = studentsService.getStudentById(id);
         model.addAttribute("students", students);
         return "input";
@@ -45,10 +48,11 @@ public class StudentsController {
 
     /**
      * 跳转input提交页面
+     *
      * @return
      */
     @GetMapping("/students/input")
-    public String inputPage(Model model){
+    public String inputPage(Model model) {
         model.addAttribute("students", new Students());
 
         return "input";
@@ -56,11 +60,12 @@ public class StudentsController {
 
     /**
      * 提交一个学生信息
+     *
      * @param students
      * @return
      */
     @PostMapping("/students")
-    public String post(Students students){
+    public String post(Students students) {
         studentsService.saveStudent(students);
         return "redirect:/students";
 
@@ -68,6 +73,7 @@ public class StudentsController {
 
     /**
      * 根据id删除学生成绩信息，利用ModelAndView进行重定向
+     *
      * @param id
      * @return
      */
@@ -80,18 +86,20 @@ public class StudentsController {
 
     /**
      * 根据id查询学生成绩详情
+     *
      * @param id
      * @param model
      * @return
      */
     @GetMapping("/students/search")
-    public String checkPage(@RequestParam("id") long id, Model model){
+    public String checkById(@RequestParam("id") long id, Model model) {
         Students students = studentsService.getStudentById(id);
-        if( students == null) {
+        if (students == null) {
             throw new StudentsNotFoundException("学生信息未找到");
         }
-            model.addAttribute("students", students);
+        model.addAttribute("students", students);
         return "search";
     }
+
 }
 

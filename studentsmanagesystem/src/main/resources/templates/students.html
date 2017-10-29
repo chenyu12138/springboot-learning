@@ -16,15 +16,13 @@
     <h1 class="page-header">学生成绩管理系统</h1>
 
 
-    <p><a href="./input.html" th:href="@{/students/input}" class="btn btn-primary">新增</a>
+    <p><a href="./input.html" th:href="@{/students/input}" class="btn btn-primary" >新增</a>
     <form class="form-inline" method="get"  th:action="@{/students/search}" >
         <div class="form-group">
-            <label for="id" class="sr-only">查询</label>
+            <label for="id" class="sr-only">根据id查询</label>
             <input type="text" name="id" class="form-control" id="id"  placeholder="学号" />
             <input type="submit" class="btn btn-primary">
         </div>
-
-
     </form>
 
 
@@ -53,7 +51,7 @@
             <td th:text="${students.math}" valign="middle">数学</td>
             <td th:text="${students.english}" valign="middle">英语</td>
             <td>
-                <a href="#" th:href="@{/students/{id}/input(id=${students.id})}" >更新</a>
+                <a href="#" th:href="@{/students/{id}/input(id=${students.id})}" >更新</a>&nbsp;
                 <a href="#" th:href="@{'/delete/' + ${students.id}}">删除</a>
             </td>
 

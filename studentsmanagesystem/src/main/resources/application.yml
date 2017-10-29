@@ -17,6 +17,9 @@ spring:
   http:
     encoding:
       charset: UTF-8
+  devtools:
+    restart:
+      trigger-file: .trigger
 
 server:
   port: 8084
